@@ -1,0 +1,11 @@
+title My Security Flow
+
+participant "Alice in woonderland" as Alice
+participant "Spring Security App" as sec
+
+Alice->sec:Signup with username\n      and password
+Alice->sec:Request Token
+sec->sec:Generate Valid Token
+sec->Alice:Delivery Token
+Alice->sec:Request Resource (/hello)\n            with token
+sec->Alice:Delivery "Hello, Alice"
