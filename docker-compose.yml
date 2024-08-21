@@ -1,0 +1,23 @@
+version: '3.9'
+
+volumes:
+  pg-data:
+
+services:
+  database:
+    image: postgres:14-alpine
+    container_name: sec-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg-data:/pgdata
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=sa
+      - POSTGRES_DB=sec
+      - PGDATA=/pgdata
+
+networks:
+  default:
+    driver: bridge
+    name: test-network
